@@ -1,0 +1,5 @@
+df = pd.read_csv('Copy of 21-08-29_LG_PLOTS-DATA.csv')
+
+print(df.columns,df.index,df.head()) # View column information, row information, and some examples of the contents of the file
+
+print(df['Size (ha)'].max(),df['Size (ha)'].min(),df['Date'].unique()) # View basic numerical information in the data
