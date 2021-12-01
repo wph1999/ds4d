@@ -1,0 +1,19 @@
+df = pd.read_csv('Intermediate.csv')
+
+L = [] # Define L
+for i in range(record_num):
+    record = df.iloc[i,:]
+    notes = str(record['Notes']) # The translation interface needs to be in continuous string form, 
+    L.append(trans(notes)) # so use loops and iloc to locate and convert to str
+
+    
+a = pd.DataFrame(L,columns=['Tnotes']) # Create a Dataframe table with the column name Tnotes, the content L and the name a
+a.to_csv('test.csv',index=False) # Write a to the test.csv file
+adf = pd.read_csv('test.csv')
+train = pd.concat([df,adf],axis=1) # Combine df and adf by column
+train.to_csv('Final.csv', index=False) # Write the merged file to Final
+Ndf = pd.read_csv('Final.csv')
+Ndf.drop(columns=['Notes'],inplace=True) # Modify directly on the source data by removing the original Notes column
+
+print('Loaded') # Since the translation api located in China was called, it would take longer than usual.
+                # So to determine if the code has been executed by printing a prompt
