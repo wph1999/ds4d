@@ -1,0 +1,18 @@
+df.drop(columns=['Contact Info','Photo ID','Complete?'],inplace=True) # Delete columns that do not contain any valid information
+
+# Treatment percentage
+record_num = int(df.describe().iloc[0,0])  # Number of lines extracted from the file
+for i in range(record_num):
+    b=str(df['% Tree'].loc[i])  # Convert format to string for easy processing using replace
+    c=str(df['% Shrub'].loc[i])
+    ret = (b.replace('-','').replace('%','').replace(' ','',1)) # Remove the special characters and leave a space as a separator
+    ret1 = (c.replace('-','').replace('%','').replace(' ','',1))
+    ret = ret.split()  # The string is divided into two segments by the location of the space
+    ret1 = ret1.split()
+    ret = list(map(int, ret)) # Batch conversion of strings to int via map, then conversion of the returned map format to list
+    ret1 = list(map(int, ret1))
+    ret = mean(ret) # Calculating the average
+    ret1 = mean(ret1)
+    df['% Tree'].loc[i] = ret # Assign a value to the corresponding position
+    df['% Shrub'].loc[i] = ret1
+    df.to_csv('Intermediate.csv',index=False) # Write to file, store it without indexing
