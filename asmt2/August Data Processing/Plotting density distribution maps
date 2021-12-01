@@ -1,0 +1,9 @@
+# Separate plots are made using the method provided by matplotlib, setting the coordinates to plot separately
+fig = plt.figure(figsize=(15,6))
+ax1 = fig.add_subplot(1,2,1)
+ax2 = fig.add_subplot(1,2,2)
+ax1.set_title('Tree distribution')
+ax2.set_title('Shrub distribution')
+# Here it is slightly easier to use sns, with kde set to true to add a regression line to the pattern
+sns.distplot(Ndf['% Tree'],kde=True, ax = ax1) 
+sns.distplot(Ndf['% Shrub'],kde=True, ax = ax2)
