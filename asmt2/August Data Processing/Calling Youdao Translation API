@@ -1,0 +1,38 @@
+def trans(word):
+    youdao_url = 'https://openapi.youdao.com/api'  # Youdao api address
+
+    # Text to be translated
+    translate_text = word
+
+    # Processing of translated text prior to sign generation
+    input_text = ""
+
+    # When the text length is less than or equal to 20, take the text
+    if(len(list(translate_text)) <= 20):
+        input_text = translate_text
+    
+    # Special handling when text length is greater than 20
+    elif(len(list(translate_text)) > 20):
+        input_text = translate_text[:10] + str(len(translate_text)) + translate_text[-10:]
+    
+    time_curtime = int(time.time())  # Seconds timestamp acquisition
+    app_id = "443cb7c507666abc"  # Application id
+    uu_id = uuid.uuid4()  # Randomly generated uuid codes
+    app_key = "w09fudXliQZGEemKJAJJbbWFJk5kmyFE"   # Application Keys
+
+    sign = hashlib.sha256((app_id + input_text + str(uu_id) + str(time_curtime) + app_key).encode('utf-8')).hexdigest()  # Sign generation
+
+
+    key = {
+        'q':translate_text,  # Translate text
+        'from':"auto",  # Source Language
+        'to':"en",  # Language of translation
+        'appKey':app_id,  # Application id
+        'salt':uu_id,  # Randomly generated uuid codes
+        'sign':sign,  # Sign
+        'signType':"v3",  # Signature type, fixed value
+        'curtime':time_curtime,  # Seconds timestamp
+    }
+
+    r = requests.get(youdao_url, params = key).json()  # Get the contents of the returned json()
+    return r["translation"][0] # Return the translated text from the received message
