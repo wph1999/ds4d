@@ -1,0 +1,21 @@
+fig = plt.figure(figsize=(15,10))
+bar_width=0.35   # Width of column
+plt.barh(y=range(len(Ndf['ID'])), width=Ndf['% Tree'], label='%Tree',
+    color='steelblue', alpha=0.7, height=bar_width)
+ 
+# Y-axis data using np.range(len(x_data))+bar_width, this is juxtaposed with the first bar chart
+plt.barh(y=np.arange(len(Ndf['ID']))+bar_width, width=Ndf['% Shrub'],
+    label='%Shrub', color='indianred', alpha=0.7, height=bar_width)
+ 
+# Display of specific values on a bar chart, ha parameter controls horizontal alignment, va controls vertical alignment
+for y, x in enumerate(Ndf['% Tree']):
+    plt.text(x+2, y-bar_width/1.1, '%s' % x, ha='center', va='bottom')
+for y, x in enumerate(Ndf['% Shrub']):
+    plt.text(x+2, y+bar_width/2, '%s' % x, ha='center', va='bottom')
+
+plt.yticks(np.arange(len(Ndf['ID']))+bar_width, Ndf['ID']) # Setting scale values for the Y-axis
+plt.title('Tree and Shrub') # Set title
+plt.xlabel('Percentage') # Set names for both axes
+plt.ylabel('ID')
+plt.legend() # Show legend
+plt.show()
