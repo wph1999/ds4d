@@ -1,1 +1,17 @@
+# Import of latitude and longitude data
+park_map = folium.Map(location=[Ndf['Latitude (Y)'].mean(), Ndf['Longitude (X)'].mean()],tiles='Stamen Toner', zoom_start=15, control_scale=True,)
+marker_cluster = plugins.MarkerCluster().add_to(park_map) # Making a collection of aggregated forms of points
 
+for index,row in Ndf.iterrows(): # Iterate through each row, but only process the returned row information
+    folium.Marker(location=[row["Latitude (Y)"], row["Longitude (X)"]],
+                  popup='ID: {}\nCoord:{}(Y), {}(X)\nSize(ha):{}\nTree(%):{}\nShrub(%):{}\nStake:{}'.format(row['ID'],row['Latitude (Y)'],
+                                                                                                      row['Longitude (X)'],
+                                                                                                      row['Size (ha)'],row['% Tree'],
+                                                                                                      row['% Shrub'],row['Stake']),
+                  tooltip='PLOT: {}'.format(row['ID']),
+                  icon=folium.Icon(color= 'green', prefix= 'fa', icon= 'tree')).add_to(marker_cluster)# Modify icon shape colours and hover tips
+    folium.Popup(html='www.baidu.com')
+park_map.add_child(folium.LatLngPopup()) # Add click to show latitude and longitude
+
+park_map.save('park_map1.html') # Storage Maps
+park_map
