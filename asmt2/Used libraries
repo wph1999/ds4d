@@ -1,0 +1,15 @@
+!pip install folium
+!pip install requests
+%matplotlib inline
+import pandas as pd
+import numpy as np
+import folium
+import json
+import requests
+import time
+import hashlib
+import uuid
+import seaborn as sns
+import matplotlib.pyplot as plt
+from numpy import *
+from folium import plugins
