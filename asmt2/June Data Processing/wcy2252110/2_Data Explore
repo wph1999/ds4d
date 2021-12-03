@@ -1,0 +1,185 @@
+#%% md
+
+# 2. Explore - Insight into the correlation between Total Height and other factors
+
+#%% md
+
+In this assignment, different from other group members, my job is to mainly focus on the Total Height column, and explore the relationship between this and other factors
+
+#%% md
+
+Firstly, I am going to remove other irrelevant columns to produce a more concise table
+
+#%%
+
+list(lg.columns) # See every column's name
+
+#%%
+
+th = lg[['Plot','ID','Species','Total Height (m)']]
+print(th) # th means 'Total Height Table'
+
+#%%
+
+for m in th['Total Height (m)']:
+    assert m >= 0, "Data should only have positive values"
+
+#%% md
+
+------
+
+#%% md
+
+## Insight into Total Height
+
+#%%
+
+np.mean(th['Total Height (m)'])
+
+#%% md
+
+Firstly, I calculated the average Total Height of trees in the table (which is 9.9 meters)
+
+Then I am going to use a distplot graph to show the distribution of Total Height
+
+#%%
+
+%matplotlib inline
+import seaborn as sns
+import matplotlib.pyplot as plt
+chart1 = sns.distplot(th['Total Height (m)'])
+chart1.set_title('Distribution of Total Height')
+plt.show()
+
+#%% md
+
+From the output, it can be seen that the density of data peaks between 5 meters and 10 meters
+
+#%% md
+
+----
+
+#%% md
+
+## Insight into Total Height and Species
+
+#%% md
+
+Generally speaking, the height of a tree is closely related to its species
+
+So firstly, I am investigating the relationship between these two factors
+
+#%%
+
+f, ax = plt.subplots(figsize=(12, 8))
+chart2 = sns.boxenplot(x='Total Height (m)', y='Species', data=th)
+chart2.set_title('Distribution of Total Height with Different species')
+plt.show()
+
+#%% md
+
+The graph shows that species do affect the total height of trees
+
+Although the highest height in the table are owned by "European hackberry (Celtis australis)", the overall height range for this species is quite short, as is the case for "Field elm (Ulmus minor)"
+
+In addition, most of the "Black locust (Robinia pseudoacacia)", "Black poplar (Populus nigra)", "Littleleaf linden (Tilia cordata)	" and "sycamore spp (Platanus)" have a good height
+
+While "European black elderberry (Sambucus nigra)", "Oneseed hawthorn (Crataegus monogyna)" and "Common fig (Ficus carica)" seem not to be good at growing up
+
+#%% md
+
+---
+
+#%% md
+
+## Insight into Total Height and Plot
+
+#%% md
+
+The table presents trees' conditions in a total of 25 plots, which makes me wonder is there any correlation beween tree's height and plots
+
+So in this stage, I want to draw a graph showing the distribution of total height in different plots
+
+#%%
+
+f, ax = plt.subplots(figsize=(12, 8))
+chart3 = sns.boxenplot(x='Plot', y='Total Height (m)', data=th)
+chart3.set_title('Distribution of Total Height in different plots')
+plt.show()
+
+#%% md
+
+From the result, it can be seen that trees growing in these plots are relatively shorter than other plots:
+"5", "6", "11", "13", "16", "20", "21", "22", "23"
+
+However, plots like "1", "14", "18", "19" and "24" have more taller trees
+
+#%% md
+
+---
+
+#%% md
+
+## Insight into Total Height, Species and Plot
+
+#%% md
+
+The above study has already produced some preliminary conclusions
+
+However, I would like to take a closer look at the specific factor that influence tree's height
+
+What if trees of the same species were planted in different plots, would their height change?
+
+#%%
+
+th.groupby('Species').agg({'Plot':'count'})
+
+#%% md
+
+By grouping the species, it can be seen that the most popular species planted in different plots are "Black locust (Robinia pseudoacacia)" and "European hackberry (Celtis australis)"
+
+In order to make the conclusions as rigorous as possible, I will analyse these two species
+
+#%%
+
+a = th.loc[th['Species'] == 'Black locust (Robinia pseudoacacia)']
+a.groupby('Plot').agg({'ID':'count'})# To show exact number of trees planted in different plots
+
+#%%
+
+chart4 = sns.stripplot(x='Plot', y='Total Height (m)', data=a)
+chart4.set_title('Distribution of Black locust (Robinia pseudoacacia) Total Height in different plots')
+plt.show()
+
+#%% md
+
+This graph can not only allow us to see which plot has most "Black locust (Robinia pseudoacacia)" planted, but also different height condition in these plots
+
+The most planted plots are "4" and "24", but they do not appear to present a significantly different picture
+
+However, it is worth noticing that tress planted in plots like "6", "15", "16" and "21" are shorter than other plots
+
+#%% md
+
+---
+
+#%%
+
+b = th.loc[th['Species'] == 'European hackberry (Celtis australis)']
+b.groupby('Plot').agg({'ID':'count'})# To show exact number of trees planted in different plots
+
+#%%
+
+chart5 = sns.stripplot(x='Plot', y='Total Height (m)', data=b)
+chart5.set_title('Distribution of European hackberry (Celtis australis) Total Height in different plots')
+plt.show()
+
+#%% md
+
+I generated this chart using the same pattern as the former one
+
+But this time, things are quite different
+
+First and foremost, this species planted in plot "1" are much higher than other places, followed by plot "18", which kind of has some high trees
+
+The rest of plots, however, don't have higher trees as they do, basically all less than 12.5 meters
