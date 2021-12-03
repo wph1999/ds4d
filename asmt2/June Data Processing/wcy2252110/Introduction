@@ -1,0 +1,20 @@
+#%% md
+
+# Assignment 2 - data by Urban Forest Ecosystem Service
+
+#%% md
+
+The challenge topic our group chose is Urban Forest Ecosystem Services host by Carlotta
+
+The database we received are many tabulars showing trees conditions in different plots
+
+Now I am going to import one of the files to describe the details of it
+
+#%%
+
+import pandas as pd
+import numpy as np
+import csv
+lg = pd.read_csv("Copy of 21-06-27_LG-dati-alberi.csv")
+print(lg)
+print(lg.dtypes)
