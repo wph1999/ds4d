@@ -1,0 +1,19 @@
+#%% md
+
+# 1. Describe - General Introduction to the tabular
+
+#%% md
+
+From the result, it is clear to see that the tabular has a total of 509 rows and 26 columns
+
+It can also be seen that there are four different data types in the tabular (int64, object, float64, bool)
+
+The first two columns' datatype are int64, showing each tree's plot and ID
+
+Object datatype are used to describe each tree's Survey Date, Species, Land Use, Crown Condition and Comments
+
+Float64 is frequently used to describe various data about the tree, including DBH(cm), DBH Height(m) and Total Height(m)
+
+Last but not least, bool datatype followed closely behind most float64 datatype, explaining whether the DBH number is measured again
+
+#%% md
