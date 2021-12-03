@@ -1,0 +1,65 @@
+#%% md
+
+# 3. Reflect and Hypothesise
+
+#%% md
+
+## Reflection on the data
+
+#%% md
+
+In the above EXPLORE stage, I generated a clear data table and focused on three columns to find correlations
+
+The conclusions are listed below:
+
+· Most of the tree's total height is distributed between 5 meters and 10 meters
+
+· The average total height of all tress is 9.9 meters
+
+· Although the highest height in the table are owned by "European hackberry (Celtis australis)", the overall height range for this species is quite short, as is the case for "Field elm (Ulmus minor)"
+
+· Most of the "Black locust (Robinia pseudoacacia)", "Black poplar (Populus nigra)", "Littleleaf linden (Tilia cordata)	" and "sycamore spp (Platanus)" have a good height
+
+· "European black elderberry (Sambucus nigra)", "Oneseed hawthorn (Crataegus monogyna)" and "Common fig (Ficus carica)" seem not to be good at growing up
+
+· Trees growing in these plots are relatively shorter than other plots:"5", "6", "11", "13", "16", "20", "21", "22", "23"
+
+· Plots like "1", "14", "18", "19" and "24" have more taller trees
+
+· The most "Black locust (Robinia pseudoacacia)" planted plots are "4" and "24", but they do not appear to present a significantly different picture
+
+· "Black locust (Robinia pseudoacacia)" planted in plots like "6", "15", "16" and "21" are shorter than other plots
+
+· "European hackberry (Celtis australis)" planted in plot "1" are much higher than other places, followed by plot "18", which kind of has some high trees
+
+· The rest of plots planting "European hackberry (Celtis australis)" don't have higher trees, basically all less than 12.5 meters
+
+#%% md
+
+## Hypotheses
+
+#%% md
+
+1. Does latitude and longitude have an effect on the height of trees?
+
+There is another file gave by the data owner, presents each plot's latitude and longitude. In the final EXPLORE stage, I summarized several conclusions about same species on different plots. However, the plots are ordered by their names, not by longitude or latitude
+
+So I am wondering if I could establish a three-dimensional graph, with latitude be the x-axis and longitude be the y-axis, and let total height distribution be the z-axis. In that case, I can see more specifically whether the latitude or longitude influence the height of trees
+
+#%% md
+
+2. Do trees compete with each other and are their heights influenced by other species?
+
+In the previous practice, I have shown the correlation between total height and the plot, but I didn't researched each plot's paticular details -- how many different trees are growing in this plot?
+
+A tree growing alone verses it growing among other trees, will the height come out differently? In case to investigate this question, I need more tree's data, much enough to set up two experimental groups, analysing these two different groups, I may find the answer
+
+#%% md
+
+3. Whether environmental factors in different locations influence the height of the tree and which specific factor plays the biggest role
+
+The researchers found out that hydraulic limitation more strongly constrains maximum tree height under drier conditions, while resource allocation such as length of growing season, soil fertility and frequency of wildfires, more strongly constrains height under moist conditions. (Reference: Givnish, T., Wong, S., Stuart-Williams, H., Holloway-Phillips, M., Farquhar. G. Determinants of maximum tree height in Eucalyptus species along a rainfall gradient in Victoria, Australia. Ecology, 2014; 140508070634001 DOI: 10.1890/14-0240.1)
+
+From my visualization graph, it can also be seen the slightest hint of the effect of different plots on same species' height. However, this has not been proven to be exactly rigorous and true, and there is no clue about which specific factor plays the role either
+
+So to prove it, I may ask the data owner for more versatile data, such as more tree's data on the plot, and the detailed data describing the plot environment
