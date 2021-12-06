@@ -1,0 +1,20 @@
+According to the division of our group, I am responsible for the correlation analysis of 'Crown: Condition'. 
+
+In this part, I accessed the file "Copy of 21-06-27_LG-dati-alberi" and renamed as lg_06_data. 
+
+I checked and visualized the column of  species , DBH1 and total height, which I thought might be related to crown condition.
+
+First I check the date. I found they were all collected from June and one tree once. So it don't include time-related change.
+DBH1 and crown looks a little positive correlative.
+Relationship between Height and crown is unclear.
+Species is strongly related to crown condition through we don't sure is a general condition. 
+
+
+
+
+
+Plot is started from Id 1 and ended at Id 25.
+
+
+
+
